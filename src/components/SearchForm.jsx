@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const SearchForm = ({ onSearch }) => {
   const [searchStr, setSearchStr] = useState('');
   const [searchOption, setSearchOption] = useState('shows');
 
+  console.log('Component Rerenders');
+  useEffect(() => {
+    console.log('Current render', searchOption);
+    return () => {
+      console.log('Before Next render', searchOption);
+    };
+  }, [searchOption]);
   const onSearchInputChange = ev => {
     setSearchStr(ev.target.value);
   };

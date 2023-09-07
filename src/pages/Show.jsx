@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import { getShowById } from '../api/tvmaze';
 import { useQuery } from '@tanstack/react-query';
 
-// const useShowById = showId => {
+// fetching logic using custom hooks (clumsy and strictmode renders twice)
+//const useShowById = showId => {
 //   const [showData, setShowData] = useState(null);
 //   const [showError, setShowError] = useState(null);
 

@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { useSearchStr } from '../lib/useSearchStr';
-import CustomRadio from './CustomRadio';
+import {
+  CustomRadio,
+  StyledInput,
+  StyledButtonWrapper,
+  StyledRadioWrapper,
+} from './StyleSearchForm';
 const SearchForm = ({ onSearch }) => {
   const [searchStr, setSearchStr] = useSearchStr();
   const [searchOption, setSearchOption] = useState('shows');
@@ -23,24 +28,33 @@ const SearchForm = ({ onSearch }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="text" value={searchStr} onChange={onSearchInputChange} />
-      <CustomRadio
-        label="Shows"
-        type="radio"
-        name="search-option"
-        value="shows"
-        checked={searchOption == 'shows'}
-        onChange={onRadioChange}
-      />
-      <CustomRadio
-        label="Actors"
-        type="radio"
-        name="search-option"
-        value="actors"
-        checked={searchOption == 'actors'}
-        onChange={onRadioChange}
-      />
-      <button type="submit">Search</button>
+      <StyledInput
+        type="text"
+        placeholder="Search for something"
+        value={searchStr}
+        onChange={onSearchInputChange}
+      ></StyledInput>
+      <StyledRadioWrapper>
+        <CustomRadio
+          label="Shows"
+          type="radio"
+          name="search-option"
+          value="shows"
+          checked={searchOption == 'shows'}
+          onChange={onRadioChange}
+        />
+        <CustomRadio
+          label="Actors"
+          type="radio"
+          name="search-option"
+          value="actors"
+          checked={searchOption == 'actors'}
+          onChange={onRadioChange}
+        />
+      </StyledRadioWrapper>
+      <StyledButtonWrapper>
+        <button type="submit">Search</button>
+      </StyledButtonWrapper>
     </form>
   );
 };
